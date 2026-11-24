@@ -1,7 +1,7 @@
 # CISHawk — CIS Benchmark Checker
 
-**Attack Category:** Auditing (Category 5)  
-**Course:** IKB31603 Ethical Hacking — Universiti Kuala Lumpur (UniKL MIIT)  
+**Attack Category:** Auditing 
+**Course:** IKB31603 Ethical Hacking   
 **Team Name:** hacker gebus  
 **Team Members:** 
   1. MUHAMMAD AMMAR FADHLI BIN NOOR ANIM (52215125029)
