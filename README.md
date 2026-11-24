@@ -1,45 +1,52 @@
-# HACKER-GEBUS---AUDITING
-# [Tool Name]
+# CISHawk — CIS Benchmark Checker
 
-A lightweight, ethically designed security **Auditing** tool built to inspect system configurations, detect misconfigurations or compliance gaps, and generate structured local audit reports in authorized environments.
-
----
-
-## Description
-
-**[Tool Name]** is a command-line security auditing utility developed to evaluate host security posture against established hardening baselines (such as CIS Benchmarks, file permissions, service configurations, or patch levels). Designed with a non-intrusive, read-only approach, the tool identifies configuration weaknesses and potential compliance drift without altering target system files. It enforces strict ethical guardrails including mandatory startup legal confirmation, safe `localhost` defaults, local-only report storage, and a clean kill switch.
+**Attack Category:** Auditing (Category 5)  
+**Course:** IKB31603 Ethical Hacking — Universiti Kuala Lumpur (UniKL MIIT)  
+**Team:** hacker gebus  
 
 ---
 
-## Attack Category
+## 1. Overview & Description
 
-* **Primary Category:** Auditing (`[e.g., Compliance Scanner / CIS Benchmark Checker / Configuration Drift Detector / Patch Audit Tool]`)
+**CISHawk** is a lightweight, read-only Linux security auditing and CIS Benchmark compliance checker written in Python. Inspired by automated system auditing frameworks, CISHawk inspects critical local Linux configurations—including system file permissions, SSH hardening parameters, password aging policies, kernel hardening flags, and firewall status—to calculate a weighted **CIS Compliance Score (0–100%)** and provide actionable remediation commands.
 
----
-
-## Attack Lifecycle Mapping
-
-Although auditing is primarily defensive and diagnostic, it maps directly to the assessment and pre-exploitation phases of the ethical hacking lifecycle:
-
-| Lifecycle Stage | Role of [Tool Name] | Description |
-| :--- | :--- | :--- |
-| **1. Reconnaissance** | Scope & Host Identification | Validates the authorized target scope (defaulting to `localhost` / `127.0.0.1`) and gathers baseline OS and environment metadata. |
-| **2. Scanning & Enumeration** | Configuration & Policy Inspection | Enumerates system settings, open services, user/file permissions, firewall status, and installed patch versions using read-only checks. |
-| **3. Vulnerability Assessment** | Baseline & Drift Analysis | Compares collected host configurations against security benchmarks to flag misconfigurations, missing patches, or unauthorized configuration drift. |
-| **4. Reporting & Remediation** | Local Audit Output | Categorizes findings by severity (Pass / Warning / Fail) and outputs clearly labeled reports with hardening recommendations to a local directory. |
-| **5. Cleanup / Safe Exit** | Non-Intrusive Termination | Executes cleanly without leaving persistent changes or artifacts, and supports immediate safe cancellation via the kill switch (`Ctrl+C`). |
+CISHawk is engineered with strict ethical guardrails: safe local defaults (`127.0.0.1`), a `--dry-run` simulation mode, a clean `Ctrl+C` kill switch, mandatory legal authorization confirmation, and local-only labeled reporting with zero external data transmission.
 
 ---
 
-## Installation
+## 2. Attack Lifecycle Mapping
 
-### Prerequisites
-* `[Python 3.8+ / Go / Bash / state your runtime]`
-* Standard or elevated (`sudo` / Administrator) privileges depending on the system configuration files being audited
-* Controlled lab environment or authorized local machine
+CISHawk supports defensive auditing and blue-team hardening across multiple phases of the ethical hacking lifecycle:
 
-### Setup Steps
-1. Clone this repository:
-   ```bash
-   git clone [https://github.com/](https://github.com/)[username]/[repo-name].git
-   cd [repo-name]
+| Lifecycle Phase | Role of CISHawk |
+| :--- | :--- |
+| **1. Reconnaissance / Local Enumeration** | Gathers read-only baseline configuration states (file modes, active SSH directives, kernel parameters, and firewall state) without modifying the host. |
+| **2. Vulnerability & Misconfiguration Assessment** | Evaluates collected configurations against CIS Linux Benchmark controls to identify privilege escalation risks, weak authentication policies, and missing host protections. |
+| **3. Exploitation Prevention (Gap Analysis)** | Maps detected misconfigurations to potential attack vectors (e.g., weak `/etc/shadow` permissions or `PermitRootLogin yes`) before adversaries can abuse them. |
+| **4. Reporting & Remediation** | Computes a weighted severity score (`High`, `Medium`, `Low`), outputs clear terminal findings, and exports a labeled local report containing step-by-step hardening fixes. |
+
+---
+
+## 3. Architecture & Workflow Diagram
+
+```text
+[User Runs CLI]
+       │
+       ▼
+[Legal Disclaimer & Authorization Gate] ──(Declined)──▶ [Exit Cleanly]
+       │ (Confirmed: y/yes)
+       ▼
+[Scope Validation (Default: 127.0.0.1)]
+       │
+       ├──(--dry-run)──▶ [List Planned CIS Checks & Exit]
+       │
+       ▼
+[Read-Only Audit Modules] ◀──(Ctrl+C Kill Switch)──▶ [Abort Cleanly]
+  ├── File Permissions (/etc/passwd, /etc/shadow, /etc/group)
+  ├── SSH Hardening (/etc/ssh/sshd_config)
+  ├── Password & Account Policy (/etc/login.defs)
+  ├── Kernel Hardening (ASLR, IP Forwarding)
+  └── Firewall Status (UFW)
+       │
+       ▼
+[Weighted Scoring Engine] ──▶ [Terminal Summary + Local ./audit_reports/ JSON/TXT]
