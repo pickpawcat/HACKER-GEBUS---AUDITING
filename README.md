@@ -54,3 +54,121 @@ CISHawk supports defensive auditing and blue-team hardening across multiple phas
        │
        ▼
 [Weighted Scoring Engine] ──▶ [Terminal Summary + Local ./audit_reports/ JSON/TXT]
+```
+
+---
+
+## 4. Installation
+
+### Prerequisites
+- Linux environment (tested on Kali Linux / Ubuntu)
+- Python 3.8 or higher
+
+### Setup
+```bash
+# 1. Clone the repository
+git clone https://github.com/pickpawcat/HACKER-GEBUS---AUDITING.git
+cd HACKER-GEBUS---AUDITING
+
+# 2. (Optional) Create and activate a virtual environment
+python3 -m venv venv
+source venv/bin/activate
+
+# 3. Install dependencies
+pip install -r requirements.txt
+```
+
+---
+
+## 5. Usage Examples
+
+> **Note:** Verify these flags against `python3 -m cischeck --help` so every example matches your exact `cli.py` arguments.
+
+### Display Help & Available Flags
+```bash
+python3 -m cischeck --help
+```
+
+### Run a Dry-Run Simulation (Safe Preview Without System Reads)
+```bash
+python3 -m cischeck --dry-run
+```
+
+### Run Standard CIS Audit Against Safe Default (`127.0.0.1`)
+```bash
+python3 -m cischeck
+```
+
+### Run Unit Tests
+```bash
+python3 -m unittest discover -s tests
+```
+
+*(Note: Certain system checks such as `/etc/shadow` or firewall status may require elevated read privileges via `sudo python3 -m cischeck`.)*
+
+---
+
+## 6. Screenshots
+
+### CLI Execution & Legal Disclaimer Banner
+*(Drag & drop screenshot terminal korang di sini semasa edit di GitHub)*
+
+### Generated Local Audit Report Preview
+*(Drag & drop screenshot HTML report korang di sini semasa edit di GitHub)*
+
+---
+
+## 7. Ethical Considerations & Safety Guardrails
+
+- **Safe Defaults:** The tool defaults strictly to `127.0.0.1` / `localhost` (or isolated test/demo data) so accidental execution never targets external infrastructure.
+- **Dry-Run Mode:** Supports a dry-run preview mode so operators can inspect planned benchmark checks before querying system configurations.
+- **Kill Switch:** Intercepts `SIGINT` (`Ctrl+C`) to abort execution cleanly without leaving orphaned processes or corrupt state.
+- **Local Data Handling (No Exfiltration):** Performs zero outbound data transmission. All generated audit reports are stored strictly locally in a clearly labeled output directory and excluded from version control via `.gitignore`.
+
+---
+
+## 8. Rules of Engagement (RoE)
+
+Operators using CISHawk must strictly follow these Rules of Engagement:
+
+1. **Authorized Scope:** Execution is restricted solely to systems owned by the operator (`localhost` / `127.0.0.1`) or lab/target systems covered by explicit written authorization.
+2. **Time Windows:** Audits on shared or organizational hosts must only be conducted within approved testing or maintenance windows agreed upon with the system administrator.
+3. **Permitted Techniques:** Read-only inspection of system configuration files, file permissions, kernel parameters, and host security controls.
+4. **Prohibited Actions:**
+   - Scanning or auditing unauthorized external IPs, university production infrastructure, or third-party systems.
+   - Modifying host configurations, weakening permissions, or running exploitation payloads.
+   - Exfiltrating or publicly publishing raw host audit outputs or sensitive system metadata.
+5. **Emergency Stop Procedures:** Press `Ctrl+C` (`SIGINT`) at any time to invoke the built-in kill switch and terminate execution immediately. If unexpected host behavior occurs on a shared environment, halt all testing and notify the system owner or lab supervisor immediately.
+
+---
+
+## 9. Responsible Disclosure Policy
+
+If CISHawk identifies a critical security misconfiguration on an authorized system:
+
+- **Who to Notify:** Report the finding privately to the authorized system owner, organizational IT security team, or lab coordinator. For critical infrastructure or public-sector systems in Malaysia, coordinate through **MyCERT / CyberSecurity Malaysia** (`cyber999@cybersecurity.my`).
+- **When to Notify:** Submit an initial confidential notification within **24–48 hours** of discovery. Do not publicly disclose findings until remediation is confirmed or a standard **90-day coordinated disclosure window** has passed.
+- **How to Notify:** Send a private, structured report detailing the affected CIS control, observed misconfiguration, risk severity, minimal non-sensitive reproduction steps, and recommended remediation command—excluding raw credential files or full host dumps.
+
+---
+
+## 10. Legal Disclaimer
+
+This tool is developed strictly for **educational purposes and authorized security auditing**. Unauthorized access to or modification of computer systems is an offense under the **Malaysia Computer Crimes Act 1997 (Act 563)** and equivalent international cybercrime laws.
+
+On startup, CISHawk displays this legal warning and requires explicit confirmation that the operator holds proper authorization for the target scope. The authors accept no liability for misuse, unauthorized scanning, or resulting damages.
+
+---
+
+## 11. Limitations
+
+- **OS Compatibility:** Primarily designed for Linux environments (Kali Linux / Ubuntu); paths and service checks may vary on RHEL-based distributions, macOS, or Windows.
+- **Privilege Dependency:** Running without `sudo` limits visibility into restricted files (such as `/etc/shadow` or active firewall rules), which are handled gracefully without crashing.
+- **Selected CIS Controls:** Audits a curated subset of high-impact CIS Linux Benchmark controls rather than the full enterprise benchmark suite.
+- **Read-Only Design:** Recommends remediation steps for manual administrator review rather than applying automatic system changes, avoiding unintended service disruption.
+
+---
+
+## 12. License
+
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
