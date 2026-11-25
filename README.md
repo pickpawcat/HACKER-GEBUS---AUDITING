@@ -114,7 +114,8 @@ python3 -m unittest discover -s tests
 *(Drag & drop screenshot terminal korang di sini semasa edit di GitHub)*
 
 ### Generated Local Audit Report Preview
-*(Drag & drop screenshot HTML report korang di sini semasa edit di GitHub)*
+<img width="1859" height="861" alt="Screenshot 2026-11-25 182526" src="https://github.com/user-attachments/assets/754edb28-eb4b-4e8a-852d-4b0bcd41133e" />
+
 
 ---
 
