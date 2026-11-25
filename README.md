@@ -115,6 +115,8 @@ python3 -m unittest discover -s tests
 
 ### Generated Local Audit Report Preview
 <img width="1859" height="861" alt="Screenshot 2026-11-25 182526" src="https://github.com/user-attachments/assets/754edb28-eb4b-4e8a-852d-4b0bcd41133e" />
+<img width="1851" height="486" alt="Screenshot 2026-11-25 182933" src="https://github.com/user-attachments/assets/0a16ed12-f34f-42c4-8ee5-89e46688e86b" />
+
 
 
 ---
