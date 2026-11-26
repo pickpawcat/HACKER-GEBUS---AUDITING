@@ -180,7 +180,8 @@ python3 -m unittest discover -s tests -v
 ## 6. Screenshots
 
 ### CLI Execution & Ethical Confirmation Gate
-*(Drag & drop screenshot terminal korang di sini semasa edit di GitHub)*
+<img width="1156" height="761" alt="Screenshot 2026-11-26 134220" src="https://github.com/user-attachments/assets/e759f799-7819-4529-baac-2dd1fb55e393" />
+
 
 ### Generated Local HTML Audit Report
 <img width="1851" height="486" alt="Screenshot 2026-11-25 182933" src="https://github.com/user-attachments/assets/7b9bf810-5938-4b60-9071-bec1e8513e5e" />
