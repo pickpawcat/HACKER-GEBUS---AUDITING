@@ -103,8 +103,7 @@ As a defensive auditing tool, CIS Benchmark Checker maps to the pre-exploitation
 ### Setup
 ```bash
 # 1. Clone the repository
-git clone [https://github.com/pickpawcat/HACKER-GEBUS---AUDITING.git](https://github.com/pickpawcat/HACKER-GEBUS---AUDITING.git)
-cd HACKER-GEBUS---AUDITING
+git clone https://github.com/pickpawcat/HACKER-GEBUS---AUDITING.git
 
 # 2. (Optional) Create and activate a virtual environment
 python3 -m venv venv
