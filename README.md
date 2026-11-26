@@ -179,13 +179,21 @@ python3 -m unittest discover -s tests -v
 
 ## 6. Screenshots
 
-### CLI Execution & Ethical Confirmation Gate
-<img width="1156" height="761" alt="Screenshot 2026-11-26 134220" src="https://github.com/user-attachments/assets/e759f799-7819-4529-baac-2dd1fb55e393" />
+### Legal Disclaimer Banner & Live Command
+<img width="783" height="523" alt="image" src="https://github.com/user-attachments/assets/8048dca8-c951-439f-a48a-f1b2a49afe34" />
+
+
+### CLI Live Audit Results (Console Output)
+<img width="551" height="531" alt="image" src="https://github.com/user-attachments/assets/f5b166e4-bfac-49b1-8b03-fd2592d7cfe8" />
+<img width="679" height="403" alt="image" src="https://github.com/user-attachments/assets/4c24da8c-8ea0-4085-adb4-076ca66a393c" />
+
 
 
 ### Generated Local HTML Audit Report
-<img width="1851" height="486" alt="Screenshot 2026-11-25 182933" src="https://github.com/user-attachments/assets/7b9bf810-5938-4b60-9071-bec1e8513e5e" />
-<img width="1859" height="861" alt="Screenshot 2026-11-25 182526" src="https://github.com/user-attachments/assets/a130eb5a-5bc9-4757-a4fe-3e53033a1f20" />
+<img width="808" height="589" alt="image" src="https://github.com/user-attachments/assets/013dae74-3a9d-44f2-b46d-474b976ce97f" />
+<img width="828" height="622" alt="image" src="https://github.com/user-attachments/assets/5420b20f-75f7-406b-a9dc-e71bf69c7d79" />
+
+
 
 
 ---
